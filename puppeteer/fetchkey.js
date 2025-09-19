@@ -3,16 +3,21 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export async function fetchKey(loaderId, durationId) {
-  const browser = await puppeteer.launch({
+ const browser = await puppeteer.launch({
   headless: true,
   args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',
     '--disable-dev-shm-usage',
+    '--disable-accelerated-2d-canvas',
+    '--no-zygote',
     '--single-process',
-    '--no-zygote'
+    '--no-first-run',
+    '--no-default-browser-check',
+    '--disable-gpu'
   ]
 });
+
 
 
   const page = await browser.newPage();
@@ -87,6 +92,7 @@ export async function fetchKey(loaderId, durationId) {
   await browser.close();
   return finalOutput;
 }
+
 
 
 
