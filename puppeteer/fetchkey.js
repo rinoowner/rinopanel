@@ -1,5 +1,9 @@
 import puppeteer from 'puppeteer';
 import dotenv from 'dotenv';
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+puppeteer.use(StealthPlugin());
+
 dotenv.config();
 
 export async function fetchKey(loaderId, durationId) {
@@ -92,6 +96,7 @@ export async function fetchKey(loaderId, durationId) {
   await browser.close();
   return finalOutput;
 }
+
 
 
 
