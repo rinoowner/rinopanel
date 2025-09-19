@@ -52,7 +52,9 @@ export async function fetchKey(loaderId, durationId) {
   await page.waitForTimeout(3000);
 
   await page.goto('https://tenda-mod.ggff.net/dashboard.php', { waitUntil: 'networkidle2' });
-  await page.screenshot({ path: 'login-debug.png' });
+ await page.screenshot({ path: 'login-debug.png' });
+ console.log("📸 Screenshot taken: login-debug.png");
+
   await page.waitForTimeout(1000);
 
   const isLoggedIn = await page.evaluate(() => {
@@ -85,5 +87,6 @@ export async function fetchKey(loaderId, durationId) {
   await browser.close();
   return finalOutput;
 }
+
 
 
